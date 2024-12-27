@@ -1,0 +1,54 @@
+---
+const { effects } = Astro.props;
+---
+<!doctype html>
+<html lang="es" class="overflow-hidden">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Los Chipis.</title>
+	</head>
+	<body>
+	
+		<div class={"w-full h-full relative overflow-hidden " + effects} id="Layout">
+			<slot />
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background-color: white;
+	}
+
+	.glowing {
+		box-shadow: inset 0 0 10px 10px rgba(14, 165, 233, 0.5);
+	}
+
+	.crt {
+		background: linear-gradient(to top, #000000, #000000, #333333, #333333);
+		background-size: cover;
+		background-size: 100% 1px;
+	}
+
+	@media screen{
+		.crt {
+			animation: scanlines infinite 55s linear ;
+		}
+	} 
+	
+	@keyframes scanlines {
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: 0 -10px;
+		}
+	}
+</style>

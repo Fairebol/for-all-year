@@ -1,0 +1,14 @@
+---
+const { video } = Astro.props;
+---
+
+<div class="w-full h-screen relative flex justify-center glowing crt">
+    <video id="video" muted autoplay src={"src/assets/video/" + video}></video>
+</div>
+<script>
+let video = document.querySelector("video");
+
+video.addEventListener('ended', e => {
+    video.style.display = "none";
+});
+</script>

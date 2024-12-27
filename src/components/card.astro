@@ -1,0 +1,10 @@
+---
+const { text } = Astro.props; 
+const { href } = Astro.props;
+---
+<div class="flex p-4 h-1/5 md:h-1/2 w-1/2 md:w-1/5 rounded-lg relative">
+    <div class="absolute bg-gradient-to-r from-gray-700 to-sky-600 w-full h-full blur"></div>
+    <a href={href} class="absolute bg-zinc-900 w-full h-full rounded-lg ring-1 text-center items-center flex justify-center">
+        <span class="font-bold text-white">{text}</span>
+    </a>
+</div>

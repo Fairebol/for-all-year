@@ -1,0 +1,38 @@
+---
+
+---
+
+<script>
+let imgLength = 14;
+
+setTimeout(doCollage, 23000);
+
+function doCollage() 
+{
+    for (let i = 1; i <= imgLength; i++) {
+        setTimeout(() => {
+            show_image("src/assets/images/initial/all" + i + ".jpeg", 200, 200, 'random image');
+        }, 2000 * i);
+    }
+}
+
+function show_image(src: string, width: number, height: number, alt: string) {
+    let img = document.createElement("img");
+    let layout = document.getElementById('Layout');
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+    
+    // set the position
+    img.style.position = 'absolute';
+    img.style.top = getRandomPosition(layout.offsetHeight - img.height) + 'px';
+    img.style.left = getRandomPosition(layout.offsetWidth - img.width) + 'px';
+
+    layout?.appendChild(img);
+}
+
+function getRandomPosition(max: number) {
+    return Math.floor(Math.random() * max);
+}
+</script>
