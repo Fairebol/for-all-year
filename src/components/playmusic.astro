@@ -4,12 +4,15 @@ const { music } = Astro.props;
 ---
 
 <div class="hidden">
-    <audio id="audio" autoplay controls loop>
-        <source src={"src/assets/music/" + music} type="audio/mpeg"/>
+    <audio id="audio" controls loop autoplay>
+        <source src={"/music/" + music} type="audio/mpeg"/>
     </audio>
 </div>
 <script>    
 let audio = document.getElementById("audio");
-audio.volume = 0.5;
+
+addEventListener("DOMContentLoaded", () => {
+    audio.volume = 0.4;
+});
 
 </script>

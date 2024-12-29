@@ -7,19 +7,40 @@ import LayoutGallery from "../layouts/LayoutGallery.astro";
     <div class="w-full h-full columns-2 md:columns-4 gap-4 space-y-4" id="gallery">
         
     </div>
+    <a href="/options" class="fixed py-2 px-4 rounded-lg text-white font-bold bottom-0 left-0 m-4 border-2 border-sky-500 transform duration-300 hover:bg-sky-600 active:scale-90">
+        Atras
+    </a>
 </LayoutGallery>
 
 <script>
-    let gallery = document.getElementById("gallery");
-    
-    for (let i = 1; i <= 44; i++) {
-        createImage("src/assets/images/to-gallery/image (" + i + ").jpeg");
+    function createLazyImage(src) {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Imagen de la galería ${src}`; // Buena práctica: añadir texto alternativo
+        img.loading = "lazy"; // Habilita el lazy loading nativo
+        img.classList.add("rounded-md", "object-cover", "w-full", "h-auto", "grid");
+        return img;
     }
 
-    function createImage(src) {
-        let img = document.createElement("img");
-        img.src = src;
-        img.classList.add("rounded-md", "object-cover", "w-full" , "h-auto", "grid");
-        gallery?.appendChild(img);
-    }
+    function loadImages() {
+        const gallery = document.getElementById("gallery");
+        if (!gallery) return; // Salir si el elemento no existe
+
+        const fragment = document.createDocumentFragment(); // Para mejor rendimiento
+
+        for (let i = 1; i <= 60; i++) {
+            const img = createLazyImage(`/img/to-gallery/image (${i}).jpeg`);
+            fragment.appendChild(img);
+        }
+
+        gallery.appendChild(fragment);
+  }
+
+  // Cargar las imágenes cuando el script se ejecuta (al final del body)
+  if (document.readyState === 'loading') {  // Loading hasn't finished yet
+    document.addEventListener('DOMContentLoaded', loadImages);
+  }
+  else {
+    loadImages();
+  }
 </script>

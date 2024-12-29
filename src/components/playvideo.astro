@@ -3,7 +3,7 @@ const { video } = Astro.props;
 ---
 
 <div class="w-full h-screen relative flex justify-center glowing crt">
-    <video id="video" muted autoplay src={"src/assets/video/" + video}></video>
+    <video id="video" muted autoplay src={"/video/" + video}></video>
 </div>
 <script>
 let video = document.querySelector("video");

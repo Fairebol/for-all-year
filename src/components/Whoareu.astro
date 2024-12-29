@@ -1,0 +1,66 @@
+---
+import IamButton from "./IamButton.astro";
+
+const CHARACTERS = [
+    {
+        name: "Kamisato",
+        color: "rose",
+    },
+    {
+        name: "Crisis",
+        color: "blue",
+    },
+    {
+        name: "Morron",
+        color: "amber",
+    },
+    {
+        name: "Dars",
+        color: "slate",
+    },
+    {
+        name: "Fairebol",
+        color: "emerald",
+    },
+];
+---
+<div class="flex flex-col justify-center items-center p-4 rounded-md bg-slate-800">
+    <section class=" text-white font-bold tracking-wider m-4 w-full text-center">
+        
+        <h1> ¿Quién Eres? </h1>
+        
+    </section>
+    <div class="w-auto h-auto flex flex-col gap-4 space-y-4 justify-center items-center my-2">
+        {
+            CHARACTERS.map(({name, color}) => (
+                <IamButton name={name} color={color} />
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    const button = Array.from(document.getElementsByTagName("a"));
+    
+    addEventListener('DOMContentLoaded', () => {
+        button.map(e => {
+            switch (e.name) {
+                case "Kamisato":
+                    e.classList.add("border-sky-600", "hover:bg-sky-500");
+                    break;
+                case "Crisis":
+                    e.classList.add("border-indigo-600", "hover:bg-indigo-500");
+                    break;
+                case "Morron":
+                    e.classList.add("border-amber-200", "hover:bg-amber-400");
+                    break;
+                case "Dars":
+                    e.classList.add("border-rose-600", "hover:bg-rose-500");
+                    break;
+                case "Fairebol":
+                    e.classList.add("border-emerald-700", "hover:bg-emerald-500");
+                    break;
+            }
+        });
+    });
+</script>

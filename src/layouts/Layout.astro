@@ -1,10 +1,12 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 const { effects } = Astro.props;
 ---
 <!doctype html>
 <html lang="es" class="overflow-hidden">
 	<head>
 		<meta charset="UTF-8" />
+		<ClientRouter />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
