@@ -24,7 +24,7 @@ const CHARACTERS = [
     },
 ];
 ---
-<div class="flex flex-col justify-center items-center p-4 rounded-md bg-slate-800">
+<div class="flex flex-col justify-center items-center p-4 rounded-md bg-zinc-950">
     <section class=" text-white font-bold tracking-wider m-4 w-full text-center">
         
         <h1> ¿Quién Eres? </h1>
@@ -42,7 +42,7 @@ const CHARACTERS = [
 <script>
     const button = Array.from(document.getElementsByTagName("a"));
     
-    addEventListener('DOMContentLoaded', () => {
+    addEventListener('load', () => {
         button.map(e => {
             switch (e.name) {
                 case "Kamisato":

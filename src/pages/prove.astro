@@ -1,8 +1,62 @@
 ---
+import Send from "../components/icons/send.astro";
 import LayoutWhoami from "../layouts/LayoutWhoami.astro";
-
+import BackButton from "../components/BackButton.astro";
 ---
 
 <LayoutWhoami>
-    
+    <div class="m-auto p-4 rounded-lg bg-zinc-800">
+        <section class="font-extrabold text-white text-center">
+            <h2>¡Demuestralo! ¿Que frase o palabra siempre diría el?</h2>
+        </section>
+        <div class="p-2 my-2 flex flex-row justify-center gap-x-6">
+            <div class="text-white font-semibold">
+                <input class="p-2 focus:rounded-lg bg-inherit border-b-2 border-stone-500" type="text" placeholder="Ej: comeme los cocos...">
+            </div>
+
+            <!-- <button class="border-2 border-green-500 hover:bg-green-500 rounded-md text-white hover:text-gray-300 transform duration-200 p-2 ">
+                <Send />
+            </button> -->
+        </div>
+
+        <BackButton href="/whoami"/>
+
+    </div>
+    <script>
+        const input = document.querySelector("input");
+        const CHARACTERWAYS = [
+            {
+                name: "kami",
+                way: "milanguche",
+            },
+            {
+                name: "crisis",
+                way: "quiero una novia",
+            },
+            {
+                name: "morron",
+                way: "tenes verdad",
+            },
+            {
+                name: "dars",
+                way: "nigger",
+            },
+            {
+                name: "fairebol",
+                way: "comeme los cocos",
+            },
+        ];
+
+        input?.addEventListener("change", (e) => 
+        {
+
+            let characterSpecify = CHARACTERWAYS.filter(key => key.way == e.target.value.toLowerCase());
+            
+            if (characterSpecify) 
+            {
+                window.location.href = "/" + characterSpecify[0].name;
+            }
+                
+        });
+    </script>
 </LayoutWhoami>

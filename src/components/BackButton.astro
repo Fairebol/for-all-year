@@ -1,0 +1,9 @@
+---
+import Back  from './icons/Back.astro';
+const { href } = Astro.props;
+---
+
+<a href={href} class="fixed inline-flex gap-x-2 flex-row py-2 px-4 rounded-lg text-white font-bold bottom-0 left-0 m-4 border-2 border-sky-500 transform duration-300 hover:bg-sky-600 active:scale-90">
+    <Back />
+    Atras
+</a>

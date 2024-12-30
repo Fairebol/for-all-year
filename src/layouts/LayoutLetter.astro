@@ -1,0 +1,82 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Playmusic from '../components/playmusic.astro';
+import BackButton from '../components/BackButton.astro';
+---
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<ClientRouter />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Carta Especial</title>
+	</head>
+    <style>
+        @font-face {
+            font-family: 'Playwrite';
+            src: url('/fonts/PlaywriteMX.ttf') format('truetype');
+        }
+        div {
+            font-family: 'Playwrite';
+        }
+
+        :root {
+  --main-line-color: hsl(234, 62%, 86%);
+  --side-line-color: hsl(350, 100%, 91%);
+  --paper-color: hsl(0, 15%, 95%);
+  --ink-color: hsl(0, 0%, 12%);
+  --line-thickness: 3px;
+  --top-space: 4lh;
+}
+
+.paper {
+  background: var(--paper-color);
+  margin: 2rem;
+  padding: calc(var(--top-space) - 0.5lh) 2.5rem 1rem 5.5rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink-color);
+  background-image: 
+    /* the red line */ linear-gradient(
+      90deg,
+      transparent,
+      transparent 4rem,
+      var(--side-line-color) 4rem,
+      var(--side-line-color) 4.25rem,
+      transparent 4.25rem
+    ),
+    /*  The top space  */
+      linear-gradient(
+        var(--paper-color),
+        var(--paper-color) var(--top-space),
+        transparent var(--top-space)
+      ),
+    /* the blue lines */
+      repeating-linear-gradient(
+        transparent,
+        transparent calc(1lh - var(--line-thickness)),
+        var(--main-line-color) calc(1lh - var(--line-thickness)),
+        var(--main-line-color) 1lh,
+        transparent 1lh
+      );
+  box-shadow: 0 0 1rem rgb(0 0 0 / 0.25);
+}
+
+    </style>
+	<body class="bg-zinc-900">
+        <Playmusic music="Our_Light.m4a"/>
+        
+		<div class="w-full h-full relative  flex justify-center items-center" id="Layout">
+        <div class="paper md:w-1/2 w-full">
+            <div class="inline-flex flex-col space-y-2">
+                
+                <slot /> 
+
+            </div>
+        </div>
+        <a href="/whoami" class="border-2 border-slate-700 p-2 rounded-lg text-gray-400 fixed bottom-0 left-0 m-2 hover:bg-slate-700 transform duration-200">Atras</a>
+		</div>
+	</body>
+</html>
