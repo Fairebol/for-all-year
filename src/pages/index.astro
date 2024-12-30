@@ -1,16 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Playmusic from '../components/playmusic.astro';
-import Playvideo from '../components/playvideo.astro';
-import DoCollage from '../components/DoCollage.astro';
-import NextButton from '../components/NextButton.astro';
-
+import Layout from "../layouts/Layout.astro";
+import { ClientRouter } from 'astro:transitions';
+import Play from "../components/icons/Play.astro";
 ---
+<ClientRouter />
 
-<Layout effects="glowing crt select-none">
-	<Playmusic music="Seventh-heaven.m4a"/>
-	<Playvideo video="Seventh-heaven.mp4"/>
-
-	<DoCollage />
-	<NextButton>
+<Layout effects="bg-zinc-800">
+    <a href="/webedit" class="w-full h-screen text-white flex items-center justify-center text-9xl">
+        <Play />
+    </a>
 </Layout>

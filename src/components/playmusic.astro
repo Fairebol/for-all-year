@@ -4,7 +4,6 @@ const { music } = Astro.props;
 ---
 
 <div class="hidden">
-    <iframe src={"/music/" + music} allow="autoplay"></iframe>
     <audio id="audio" controls muted loop autoplay>
         <source src={"/music/" + music} type="audio/mpeg"/>
     </audio>
